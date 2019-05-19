@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
-import * as firebase from 'firebase'
+// import * as firebase from 'firebase';
+import { User } from 'firebase';
 import { AppUser } from './models/app-user';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class UserService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  save(user: firebase.User) {
+  save(user: User) {
     this.db.object('/users/' + user.uid).update({
       name: user.displayName,
       email: user.email
