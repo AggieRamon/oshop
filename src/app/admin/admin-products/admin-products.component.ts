@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/product.service';
 import { Subscription } from 'rxjs';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { DatabaseSnapshot, AngularFireAction } from '@angular/fire/database';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-admin-products',
@@ -22,7 +23,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.subscription = this.productService.getAll().subscribe(products => {
       this.dataSource.data = this.products = products;
     });
-    this.dataSource.sortingDataAccessor = (item: AngularFireAction<DatabaseSnapshot<{title: string}>>, property) => {
+    this.dataSource.sortingDataAccessor = (item: AngularFireAction<DatabaseSnapshot<Product>>, property) => {
       return item.payload.val()[property];
     };
    }

@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { ProductService } from 'src/app/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { AngularFireAction, DatabaseSnapshot } from '@angular/fire/database';
 
 @Component({
   selector: 'app-product-form',
@@ -13,7 +14,7 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductFormComponent implements OnInit {
   categories$: Observable<{}[]>;
-  product: Product = {};
+  product: AngularFireAction<DatabaseSnapshot<Product>>;
   id;
 
   constructor(
