@@ -35,6 +35,7 @@ export class ProductFormComponent implements OnInit {
       this.productService.update(this.id, product);
     } else {
       this.productService.create(product);
+      console.log(product);
     }
 
     this.router.navigate(['/admin/products']);
